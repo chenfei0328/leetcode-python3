@@ -230,3 +230,45 @@ pre_min = min(pre_min * nums[i], pre_max * nums[i], nums[i])
 pre_max = max(pre_min * nums[i], pre_max * nums[i], nums[i])
 
 最终结果为pre_max出现过的最大值
+
+
+
+
+
+198.house-robber
+
+解法一：
+
+类似于爬楼梯
+
+状态转移方程：
+
+dp[i] = max(dp[i - 1], dp[i - 2] + dp[i])
+
+
+
+
+
+213.house-robber2
+
+解法一：
+
+多了一个环形的限制条件，则取nums[1:]和nums[:-1]结果的最大值
+
+状态转移方程：
+
+dp[i] = max(dp[i - 1], dp[i - 2] + dp[i])
+
+
+
+
+
+221.maximal-square
+
+解法一：
+
+状态转移方程：
+
+dp\[i][j] = 1 + min(dp\[i - 1][j - 1], dp\[i][j - 1], dp\[i - 1][j])
+
+area = max(max, pow(dp\[j][j], 2))
