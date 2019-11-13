@@ -272,3 +272,105 @@ dp[i] = max(dp[i - 1], dp[i - 2] + dp[i])
 dp\[i][j] = 1 + min(dp\[i - 1][j - 1], dp\[i][j - 1], dp\[i - 1][j])
 
 area = max(max, pow(dp\[j][j], 2))
+
+
+
+
+
+264.ugly-number2
+
+解法一：
+
+分别用三个指针记录2,3,5的倍数，每次取指针对应数乘以该倍数的最小值
+
+状态转移方程：
+
+dp[i] = min(2 * dp[pointer_2], 3 * dp[pointer_3], 5 * dp[pointer_5])
+
+且满足2 * dp[pointer_2] > dp[i - 1] and 3 * dp[pointer_3] > dp[i - 1] and 5 * dp[pointer_5] > dp[i - 1]
+
+
+
+
+
+*279.perfect-squares
+
+解法一：
+
+DP
+
+https://blog.csdn.net/qq_35481167/article/details/82817699
+
+解法二;
+
+math	
+
+https://leetcode.com/problems/perfect-squares/discuss/428031/32ms-python-space-less-than-100
+
+
+
+
+
+*300.longest-increasing-subsequence
+
+解法一：
+
+nums[i] <= nums[i - 1]，从当前位置往头搜索第一个小于nums[i]的数，索引为j，则 dp[i] = dp[j] + 1，如果没找到则dp[i] = 1
+
+nums[i] > nums[i - 1]，则初始状态为now = dp[i - 1] + 1，从当前位置往头搜索所有nums[i] > nums[j]，now = max(now, dp[j] + 1)，从而dp[i] = now
+
+而res = max(res, dp[i])
+
+时间复杂度：O(n * n)
+
+空间复杂度：O(n)
+
+
+
+解法二：
+
+简化解法一的代码
+
+
+
+解法三：
+
+维护一个递增数组，每次遇到小于最大值的数就通过二分查找插入，如果是末尾位置则直接插入，其他情况则覆盖地插入数组。最终这个数组不一定是那个递增序列，但数组的长度是要求的答案
+
+
+
+
+
+303.range-sum-query-immutable
+
+解法一：
+
+就是聚合
+
+dp[i] += dp[i - 1]
+
+
+
+
+
+304.range-sum-query2D-immutable
+
+解法一：
+
+二维的聚合
+
+dp\[i][j] = matrix\[i - 1][j - 1] + dp\[i - 1][j] + dp\[i][j - 1] - dp\[i - 1][j - 1]
+
+计算结果时注意重复减的地方加回来
+
+
+
+
+
+338.counting-bits
+
+解法一：
+
+找规律dp=[0, |1|, |1, 2|, |1, 2, 2, 3|, |1, 2, 2, 3, 2, 3, 3, 4|,...]
+
+每次延长的部分都是前面部分对应位置+1
