@@ -9,23 +9,23 @@
 
 解法二：
 
-dp\[i][j] 表示字符串s[i:j]是否为回文子串
+$dp[i][j]$ 表示字符串$s[i:j]$是否为回文子串
 
 状态转移方程：
 
-dp\[i][j] = dp\[i+1][j-1] if s[i] == s[j] else 0
+$dp[i][j] = dp[i+1][j-1]\ if\ s[i] == s[j]\ else\ 0$
 
 初始化条件：
 
-dp\[i][i] = 1
+$dp[i][i] = 1$
 
-dp\[i][i+1] = 1 if s[i] == s[i+1] else 0
+$dp[i][i+1] = 1\ if\ s[i] == s[i+1]\ else\ 0$
 
 
 
-时间复杂度：O(n^2)
+时间复杂度：$O(n^2)$
 
-空间复杂度：O(n^2)
+空间复杂度：$O(n^2)$
 
 
 
@@ -33,9 +33,9 @@ dp\[i][i+1] = 1 if s[i] == s[i+1] else 0
 
 计算当前步骤时，即子串长度为k时，只依赖于k-1的结果，故可以只用两个一维数组来保存中间状态
 
-时间复杂度：O(n^2)
+时间复杂度：$O(n^2)$
 
-空间复杂度：O(n)
+空间复杂度：$O(n)$
 
 
 
@@ -47,11 +47,11 @@ dp\[i][i+1] = 1 if s[i] == s[i+1] else 0
 
 解法一：
 
-dp[i] 表示以nums[i]为结尾的连续子序列的最大和
+$dp[i]$ 表示以$nums[i]$为结尾的连续子序列的最大和
 
 状态转移方程：
 
-dp[i] = max(nums[i], nums[i] + dp[i-1])
+$dp[i] = max(nums[i], nums[i] + dp[i-1])$
 
 
 
@@ -59,13 +59,13 @@ dp[i] = max(nums[i], nums[i] + dp[i-1])
 
 70.climbing-stairs
 
-从后往前的递归会超时：return climbStairs(n - 1) + climbStairs(n - 2)
+从后往前的递归会超时：$return\ climbStairs(n - 1) + climbStairs(n - 2)$
 
 解法一：
 
 状态转移方程：
 
-dp[i] = dp[i -1] + dp[i - 2]
+$dp[i] = dp[i -1] + dp[i - 2]$
 
 
 
@@ -77,11 +77,11 @@ dp[i] = dp[i -1] + dp[i - 2]
 
 状态转移方程：
 
-dp\[i][j] = dp\[i][j - 1] + dp\[i - 1][j]
+$dp[i][j] = dp[i][j - 1] + dp[i - 1][j]$
 
 初始化条件：
 
-dp\[i][0], dp\[0][j]= 1, 1
+$dp[i][0], dp[0][j]= 1, 1$
 
 
 
@@ -93,11 +93,11 @@ dp\[i][0], dp\[0][j]= 1, 1
 
 状态转移方程：
 
-dp\[i][j] = 0 if dp\[i][j] is obstacle else dp\[i][j - 1] + dp\[i - 1][j]
+$dp[i][j] = 0\ if\ dp[i][j]\ is\ obstacle\ else\ dp[i][j - 1] + dp[i - 1][j]$
 
 初始化条件：
 
-dp\[i][0], dp\[0][j]= 1, 1 遇到障碍后面的位置全等于0
+$dp [i][0], dp[0][j]= 1, 1$ 遇到障碍后面的位置全等于0
 
 如果起点为obstacle则直接返回0
 
@@ -111,7 +111,7 @@ dp\[i][0], dp\[0][j]= 1, 1 遇到障碍后面的位置全等于0
 
 状态转移方程：
 
-dp\[i][j] += min(dp\[i - 1][j], dp\[i][j - 1])
+$dp[i][j] += min(dp[i - 1][j], dp[i][j - 1])$
 
 
 
@@ -133,9 +133,9 @@ dp[i] = 0, s[i] == '('
 
 ​										dp[i - 2] + 2 +dp[i - 2 - dp[i - 1]], s[i - 1 - dp[i - 1]] == '('
 
-其中，dp[i - 2 - dp[i - 1]]表示当前有效字符串的前一位，是否也是一个有效字符串，直接相加
+其中，$dp[i - 2 - dp[i - 1]]$表示当前有效字符串的前一位，是否也是一个有效字符串，直接相加
 
-初始化dp = [0] * len(s)，计算过程中要注意判断索引是否越界
+初始化$dp = [0] * len(s)$，计算过程中要注意判断索引是否越界
 
 
 
@@ -191,7 +191,7 @@ https://blog.csdn.net/u010582082/article/details/69569237
 
 状态转移方程：
 
-dp\[i][j] += min(dp\[i - 1][j], dp\[i - 1][j - 1])
+$dp[i][j] += min(dp[i - 1][j], dp[i - 1][j - 1])$
 
 解法二：
 
@@ -199,7 +199,7 @@ dp\[i][j] += min(dp\[i - 1][j], dp\[i - 1][j - 1])
 
 状态转移方程：
 
-dp\[i][j] += min(dp\[i + 1][j], dp\[i + 1][j + 1])
+$dp[i][j] += min(dp[i + 1][j], dp[i + 1][j + 1])$
 
 
 
@@ -225,9 +225,9 @@ pre_max：当前连续数组的最大值
 
 状态转移方程：
 
-pre_min = min(pre_min * nums[i], pre_max * nums[i], nums[i])
+$pre\_min = min(pre\_min * nums[i], pre\_max * nums[i], nums[i])$
 
-pre_max = max(pre_min * nums[i], pre_max * nums[i], nums[i])
+$pre\_max = max(pre\_min * nums[i], pre\_max * nums[i], nums[i])$
 
 最终结果为pre_max出现过的最大值
 
@@ -243,7 +243,7 @@ pre_max = max(pre_min * nums[i], pre_max * nums[i], nums[i])
 
 状态转移方程：
 
-dp[i] = max(dp[i - 1], dp[i - 2] + dp[i])
+$dp[i] = max(dp[i - 1], dp[i - 2] + dp[i])$
 
 
 
@@ -253,11 +253,11 @@ dp[i] = max(dp[i - 1], dp[i - 2] + dp[i])
 
 解法一：
 
-多了一个环形的限制条件，则取nums[1:]和nums[:-1]结果的最大值
+多了一个环形的限制条件，则取$nums[1:]$和$nums[:-1]$结果的最大值
 
 状态转移方程：
 
-dp[i] = max(dp[i - 1], dp[i - 2] + dp[i])
+$dp[i] = max(dp[i - 1], dp[i - 2] + dp[i])$
 
 
 
@@ -269,9 +269,9 @@ dp[i] = max(dp[i - 1], dp[i - 2] + dp[i])
 
 状态转移方程：
 
-dp\[i][j] = 1 + min(dp\[i - 1][j - 1], dp\[i][j - 1], dp\[i - 1][j])
+$dp[i][j] = 1 + min(dp[i - 1][j - 1], dp[i][j - 1], dp[i - 1][j])$
 
-area = max(max, pow(dp\[j][j], 2))
+$area = max(max, pow(dp[j][j], 2))$
 
 
 
@@ -285,9 +285,9 @@ area = max(max, pow(dp\[j][j], 2))
 
 状态转移方程：
 
-dp[i] = min(2 * dp[pointer_2], 3 * dp[pointer_3], 5 * dp[pointer_5])
+$dp[i] = min(2 * dp[pointer\_2], 3 * dp[pointer\_3], 5 * dp[pointer\_5])$
 
-且满足2 * dp[pointer_2] > dp[i - 1] and 3 * dp[pointer_3] > dp[i - 1] and 5 * dp[pointer_5] > dp[i - 1]
+且满足$2 * dp[pointer\_2] > dp[i - 1]\ and\ 3 * dp[pointer\_3] > dp[i - 1]\ and\ 5 * dp[pointer\_5] > dp[i - 1]$
 
 
 
@@ -315,15 +315,15 @@ https://leetcode.com/problems/perfect-squares/discuss/428031/32ms-python-space-l
 
 解法一：
 
-nums[i] <= nums[i - 1]，从当前位置往头搜索第一个小于nums[i]的数，索引为j，则 dp[i] = dp[j] + 1，如果没找到则dp[i] = 1
+$nums[i] <= nums[i - 1]$，从当前位置往头搜索第一个小于$nums[i]$的数，索引为j，则 $dp[i] = dp[j] + 1$，如果没找到则$dp[i] = 1$
 
-nums[i] > nums[i - 1]，则初始状态为now = dp[i - 1] + 1，从当前位置往头搜索所有nums[i] > nums[j]，now = max(now, dp[j] + 1)，从而dp[i] = now
+$nums[i] > nums[i - 1]$，则初始状态为$now = dp[i - 1] + 1$，从当前位置往头搜索所有$nums[i] > nums[j]$，$now = max(now, dp[j] + 1)$，从而$dp[i] = now$
 
-而res = max(res, dp[i])
+而$res = max(res, dp[i])$
 
-时间复杂度：O(n * n)
+时间复杂度：$O(n * n)$
 
-空间复杂度：O(n)
+空间复杂度：$O(n)$
 
 
 
@@ -347,7 +347,7 @@ nums[i] > nums[i - 1]，则初始状态为now = dp[i - 1] + 1，从当前位置�
 
 就是聚合
 
-dp[i] += dp[i - 1]
+$dp[i] += dp[i - 1]$
 
 
 
@@ -359,7 +359,7 @@ dp[i] += dp[i - 1]
 
 二维的聚合
 
-dp\[i][j] = matrix\[i - 1][j - 1] + dp\[i - 1][j] + dp\[i][j - 1] - dp\[i - 1][j - 1]
+$dp[i][j] = matrix[i - 1][j - 1] + dp[i - 1][j] + dp[i][j - 1] - dp[i - 1][j - 1]$
 
 计算结果时注意重复减的地方加回来
 
@@ -371,6 +371,42 @@ dp\[i][j] = matrix\[i - 1][j - 1] + dp\[i - 1][j] + dp\[i][j - 1] - dp\[i - 1][j
 
 解法一：
 
-找规律dp=[0, |1|, |1, 2|, |1, 2, 2, 3|, |1, 2, 2, 3, 2, 3, 3, 4|,...]
+找规律$dp=[0, |1|, |1, 2|, |1, 2, 2, 3|, |1, 2, 2, 3, 2, 3, 3, 4|,...]$
 
 每次延长的部分都是前面部分对应位置+1
+
+
+
+
+
+*322.coin-change
+
+解法一：
+
+$dp[i] = min(dp[i - coin], dp[i])$
+
+使用了该coin情况下，凑成i块钱所需的最少硬币数
+
+初始化条件：
+
+$dp = [i\ for\ i\ in\ range(amount + 1)]$
+
+
+
+
+
+*343.integer-break
+
+解法一：
+
+$dp[i] = max(dp[i], j * dp[i - j], j * (i - j))$
+
+$dp[i]$代表把$i$拆成$j$和$i-j$两个数时最大的乘积；要么直接相乘，要么把其中一个数字的dp取出来再乘
+
+初始化条件：
+
+$dp = [1] * (n + 1)$
+
+解法二：
+
+通过观察法发现要拆成尽量多的3
