@@ -74,3 +74,66 @@ python交换数据
 
 nums[pre_index], nums[after_index] = nums[after_index], nums[pre_index]
 
+
+
+33.search-in-rotated-sorted-array
+
+python  while A and B   是依次判断A和B的
+
+
+
+34.find-first-and-last-position-of-element-in-sorted-array
+
+二分查找
+
+
+
+39.combination-sum
+
+递归
+
+
+
+41.first-missing-positive
+
+使用两个集合分别记录每个数的+1数和1，以及非法数据，每次插入都验证是否合法
+
+
+
+*42.trapping-rain-water
+
+动规，分别从左到右和从右到左记录每个位置的最高左柱和最高右柱
+
+water += min(max_left[i], max_right[i]) - height[i]
+
+
+
+46.permutations
+
+回溯，类似39/22/17
+
+深浅复制的问题：ans.append(combination)
+
+*1.ans.append(combination[:]) 
+
+2.ans.append(copy.deepcopy(combination))
+
+3.backtrack([])
+
+
+
+48.rotate-image
+
+正方形顺时针翻转in-place，注意索引位置
+
+
+
+49.group-anagrams
+
+把每个字符串都转成有序序列
+
+
+
+55.jump-game
+
+动规，记录当前点可达的最远距离，如果最远距离大于当前位置，则右移
