@@ -137,3 +137,55 @@ water += min(max_left[i], max_right[i]) - height[i]
 55.jump-game
 
 动规，记录当前点可达的最远距离，如果最远距离大于当前位置，则右移
+
+（内部函数修改外部函数变量，nonlocal声明）
+
+
+
+56.merge-intervals
+
+先排序这些区间，这样每次都只需要和最后一个merged区间进行比较就行了
+
+
+
+*72.edit-distance
+
+$dp[i][j]$ 表示word1[:i]和word2[:j]的编辑距离
+
+状态转移方程：
+
+$dp[i][j] = dp[i-1][j-1]\ if\ word1[i-1] == word2[j-1]\ else\ 1+min(dp[i - 1][j - 1], dp[i - 1][j], dp[i][j - 1])$
+
+初始化条件：
+
+$dp[0][j] = j$ and $dp[i][0] = i$
+
+
+
+时间复杂度：$O(mn)$
+
+空间复杂度：$O(mn)$
+
+
+
+75.sort-colors
+
+遍历一遍数组，用两个指针分别表示01的交界及12的交界，每次遇到0或1则移动交界处的值，遇到2则pass
+
+
+
+*78.subsets
+
+方法一：
+
+每新增一个元素，则把该元素加入结果集中的每一个子集
+
+方法二：
+
+回溯：以子集元素个数为终止条件进行n次backtrack
+
+
+
+79.word-search
+
+dfs
