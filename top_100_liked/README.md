@@ -189,3 +189,33 @@ $dp[0][j] = j$ and $dp[i][0] = i$
 79.word-search
 
 dfs
+
+
+
+94.binary-tree-inorder-traversal
+
+中根遍历，递归/栈
+
+
+
+98.validate-binary-search-tree
+
+检测是否为搜索二叉树，递归/栈
+
+
+
+101.symmetric-tree
+
+检测是否为镜像树，递归/栈，用两个root，分别比较root1.left和root2.right  和 root1.right和root2.left
+
+
+
+102.binary-tree-level-order-traversal
+
+层次遍历，用Level来记录每个节点的层次，queue
+
+
+
+104.maximum-depth-of-binary-tree
+
+求深度
