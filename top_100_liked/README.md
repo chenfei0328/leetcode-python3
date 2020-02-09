@@ -313,3 +313,79 @@ collections.OrderedDict() 按照插入顺序排列的字典
 方法二：
 
 分别遍历A和B，记录两个链表的长度，从而根据长度差来调整下一次遍历的两个指针的间距
+
+
+
+*155.min-stack
+
+每次push一个元素，如果最小值有更新（x <= self.minValue），则先push入原最小值，再push该元素
+
+每次pop栈顶元素，如果该值等于最小值，则接着再pop一个元素（即push进来的最小值），然后更新最小值，即第二次pop的元素
+
+
+
+169.majority-element
+
+方法一：
+
+hash表存储每个数的次数，当某个数的次数大于len(nums) / 2则停止
+
+方法二：
+
+使用collections.Counter
+
+方法三：
+
+排序数组，返回中间的值nums[len(nums)//2]
+
+
+
+200.number-of-islands
+
+经典的dfs
+
+
+
+206.reverse-linked-list
+
+in-place反转链表
+
+
+
+207-course-schedule
+
+dfs，判断是否有circle
+
+from collections import defaultdict 
+
+d = defaultdict(list)  默认字典的value为列表
+
+
+
+*215.Kth-largest-element-in-an-array
+
+方法一：
+
+维护一个容量为k的堆
+
+return heapq.nlargest(k, nums)[-1]
+
+方法二：
+
+先排序
+
+return sorted(nums)[-k]
+
+
+
+*234.palindrome-linked-list
+
+方法一：
+
+用栈来存链表元素，然后再读一遍链表并进行比较 time: $O(n)$ space: $O(n)$
+
+方法二:
+
+用一个slow和一个fast同时遍历链表，其中fast的遍历速度为slow的两倍，从而使slow能到达链表中点，并且slow的过程同时反转链表。最后同时从起点和中点开始遍历并比较
+
+time: $O(n)$ space: $O(1)$
