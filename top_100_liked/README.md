@@ -389,3 +389,47 @@ return sorted(nums)[-k]
 用一个slow和一个fast同时遍历链表，其中fast的遍历速度为slow的两倍，从而使slow能到达链表中点，并且slow的过程同时反转链表。最后同时从起点和中点开始遍历并比较
 
 time: $O(n)$ space: $O(1)$
+
+
+
+*236.lowest-common-ancestors-of-a-binary-tree
+
+先把p和q的所有祖先记录下来，然后自底向上遍历q的祖先，第一次和p的祖先相同则是最小公共祖先
+
+
+
+*238.product-of-array-except-self
+
+从右往左记录记录每个位置的累积乘，然后从左往右计算累积乘，对应位置的两者之积为结果
+
+
+
+239.sliding-window-maximum
+
+当前窗口最大值为ans[i]，只有nums[i+1]>ans[i] 或 nums[i+1]<ans[i] && ans[i-w]==ans[i]才会更新ans[i+1]
+
+
+
+*240.search-a-2D-matrix-2
+
+从左下角或右上角开始搜索
+
+
+
+283.move-zeros
+
+循环一遍，即时记录非零的个数，即赋值的索引位置
+
+
+
+*287.find-the-duplicate-number
+
+方法一：
+
+用set来存时间复杂为O(n)，空间复杂度为O(n)
+
+方法二：
+
+类似于链表中存在一个cycle，然后用追及方法来做。时间复杂为O(n)，空间复杂度为O(1)
+
+141/142 linked list cycle
