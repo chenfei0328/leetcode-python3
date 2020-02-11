@@ -433,3 +433,25 @@ time: $O(n)$ space: $O(1)$
 类似于链表中存在一个cycle，然后用追及方法来做。时间复杂为O(n)，空间复杂度为O(1)
 
 141/142 linked list cycle
+
+
+
+297.serialize-and-deserialize-binary-tree
+
+序列化和反序列化二叉树
+
+
+
+*347.top-K-frequent-elements
+
+先扫一遍所有元素的计数，根据计数建立一个size=k的大顶堆
+
+count = collections.Counter(nums)
+
+return heapq.nlargest(k, count.keys(), key=count.get)
+
+
+
+394.decode-string
+
+递归
