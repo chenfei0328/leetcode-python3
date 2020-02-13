@@ -455,3 +455,61 @@ return heapq.nlargest(k, count.keys(), key=count.get)
 394.decode-string
 
 递归
+
+
+
+*416.partition-equal-subset-sum
+
+方法一：
+
+初始化：dp = [False] * (halfSum + 1)           dp[0] = True
+
+对于每一个num in nums, dp[i+num] = True if dp[i] = True. 但需要注意的是i必须从大到小遍历
+
+方法二：
+
+回溯（个别案例Time Limit Exceeded）
+
+
+
+437.path-sum-3
+
+方法一：
+
+以不同的起点，遍历子树  $O(n^2)$
+
+方法二：
+
+用stack来存累积和，每次新加入一个节点，更新stack里所有的值，将新生成的等于sum的个数加到总计数 $O(n)$
+
+
+
+438.find-all-anagrams-in-a-string
+
+使用hash表来存字符个数
+
+
+
+448.find-all-numbers-disappeared-in-an-array
+
+一次循环做记号，一次循环把标记的数删除；使用hash表能加快一定速度但使用了额外的空间
+
+
+
+*494.target-sum
+
+回溯会超时
+
+dp\[i][j] 表示前i个数可组成j的个数，则有dp\[i][s+nums[i]] += dp\[i-1][s] 、dp\[i][s-nums[i]] += dp\[i-1][s]
+
+
+
+*543.biameter-of-binary-tree
+
+找最长路径
+
+
+
+617.merge-two-binary-trees
+
+递归地遍历两棵树的相同位置的结点
