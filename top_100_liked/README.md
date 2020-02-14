@@ -513,3 +513,39 @@ dp\[i][j] 表示前i个数可组成j的个数，则有dp\[i][s+nums[i]] += dp\[i
 617.merge-two-binary-trees
 
 递归地遍历两棵树的相同位置的结点
+
+
+
+581.shortest-unsorted-continuus-subarray
+
+方法一：
+
+先sort然后找到左右元素不相等的位置 $O(n\log n)$
+
+方法二
+
+从左到右寻找需要移动的left，同时记录最小元素应该到哪个位置；从右往左也这样 $O(n)$
+
+
+
+*621.task-scheduler
+
+计算cooling interval的值，然后加上task的数量
+
+
+
+*647.palindromic-substrings
+
+回文字符串的个数，dp数组为上三角，参考第5题
+
+
+
+*739.daily-temperatures
+
+方法一：
+
+从右往左遍历，当左<右则ans[左]=1，或者按右+ans[右]的顺序比较 $O(nw)$ 
+
+方法二：
+
+从右往左遍历，用栈来存储所有比当前元素更大的值，如果更小的则pop，因为后续元素也不需要这些值了 $O(n)$ 
