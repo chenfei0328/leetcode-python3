@@ -274,6 +274,16 @@ hash表
 
 
 
+*139.word-break
+
+dp = [0 for _ in range(l + 1)]
+
+dp[0] = 1
+
+对于每一个dp[i]，if 1，则去遍历后续的s[i:j]，如果存在于字典中，则dp[j]=1
+
+
+
 141.linked-list-cycle
 
 方法一：
@@ -362,6 +372,12 @@ d = defaultdict(list)  默认字典的value为列表
 
 
 
+208.implement-trie(prefix-tree)
+
+每个字母都作为一个结点，把‘*’作为是否含有该单词的判断标准
+
+
+
 *215.Kth-largest-element-in-an-array
 
 方法一：
@@ -442,6 +458,12 @@ time: $O(n)$ space: $O(1)$
 
 
 
+*337.house-robber-3
+
+递归遍历左子树和右子树，递归函数第一项是计算了node.val的最大值，因此左右子树应返回的是不包含该结点的最大值；第二项是不计算node.val的最大值，即左右子树计算了该结点
+
+
+
 *347.top-K-frequent-elements
 
 先扫一遍所有元素的计数，根据计数建立一个size=k的大顶堆
@@ -455,6 +477,12 @@ return heapq.nlargest(k, count.keys(), key=count.get)
 394.decode-string
 
 递归
+
+
+
+*406.queue-reconstruction-by-height
+
+关键是要先按照规则排序，然后按顺序把每个元素放在相应的位置
 
 
 
@@ -507,6 +535,24 @@ dp\[i][j] 表示前i个数可组成j的个数，则有dp\[i][s+nums[i]] += dp\[i
 *543.biameter-of-binary-tree
 
 找最长路径
+
+
+
+*560.subarray-sum-equals-K
+
+方法一：
+
+使用累计和，然后再计算每个区间的和（会超时）$O(n)$ 
+
+方法二：
+
+用map存累积和的个数，每次count += map[sum-k]，
+
+---------sum-k-----(k)-----sum-----------sum-----------sum----------
+
+---------sum-k----------------k-------------sum-----------sum----------
+
+根据sum-k的个数来决定当前得到sum时，有几种区间可以选择
 
 
 
