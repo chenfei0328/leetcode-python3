@@ -31,3 +31,27 @@
 
 用27个列表来存
 
+
+
+54.spiral-matrix
+
+一层一层往里读
+
+
+
+66.plus-one
+
+判断是否需要进位和首位insert(1,0)
+
+
+
+73.set-matrix-zeroes
+
+主要是空间上的限制，用 $O(n)$ 的set空间记录需要置0的列。在遍历完每一行后都判断是否需要将这行置0，同时更新set
+
+
+
+88.merge-sorted-array
+
+从后往前遍历，$O(m+n)$
+
