@@ -51,6 +51,14 @@
 
 
 
+*76.minimum-window-substring
+
+用滑动窗口去做，每次碰到一个字符都计算当前窗口是否符合要求，如果符合则更新最小的窗口，同时更新窗口的起始位置
+
+collections.Counter(t) 
+
+
+
 88.merge-sorted-array
 
 从后往前遍历，$O(m+n)$
@@ -72,3 +80,23 @@
 *118.pascal's-triangle
 
 可以动规，每一行的元素，第一个和最后一个都是1，其余位置都是上一行相邻两个位置之和
+
+
+
+122.best-time-to-buy-and-sell-stock-2
+
+递增则改变sell的位置，若减小则把之前的sell掉，减小的位置为下一次buy的位置
+
+
+
+125.valid-palindrome
+
+isalpha()  lower()  isdigit()
+
+
+
+*150.evaluate-reverse-polish-notation
+
+用栈来存数值，每次遇到符号则出栈两个数字进行计算，operation用lambda
+
+//运算取整时保留整数的下界，int则是剪去小数部分，只保留前面的整数，即向零取整，round函数遵循四舍五入的法则
