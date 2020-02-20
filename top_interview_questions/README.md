@@ -95,8 +95,84 @@ isalpha()  lower()  isdigit()
 
 
 
+131.palindrome-partitioning
+
+回溯递归
+
+
+
 *150.evaluate-reverse-polish-notation
 
 用栈来存数值，每次遇到符号则出栈两个数字进行计算，operation用lambda
 
 //运算取整时保留整数的下界，int则是剪去小数部分，只保留前面的整数，即向零取整，round函数遵循四舍五入的法则
+
+
+
+*162.find-peak-element
+
+方法一：
+
+遍历，$O(n)$
+
+方法二：
+
+二叉搜索的方法，每次寻找较小值的那一部分（确保了另一半是符合peak要求的） $O(\log_2 n)$
+
+
+
+171.excel-sheet-column-number
+
+ord(s)
+
+
+
+*189.rotate-array
+
+方法一：
+
+reverse三次
+
+方法二：
+
+按step=k来把左部的元素移到右侧
+
+
+
+*190.reverse-bits
+
+b = bin(n)
+
+b = b[2:]
+
+b = int(b, base=2)
+
+
+
+*191.number-of-1-bits
+
+方法一：
+
+遍历二进制字符串
+
+方法二：
+
+n &= (n-1)
+
+
+
+202.happy-number
+
+用一个字典存中间过程的数，如果重复出现了，则表示它不happy
+
+
+
+*204.count-primes
+
+统计素数个数，经典的做法，从小到大遍历，如果当前数是素数，则把该素数的倍数全设置为非素数，下次就不用遍历那些数了
+
+
+
+217.contains-duplicate
+
+用hash表来存出现过的数
