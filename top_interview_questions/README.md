@@ -101,6 +101,12 @@ isalpha()  lower()  isdigit()
 
 
 
+*134.gas-station
+
+用一个remain来记录存量，lack来记录缺失的部分，当remain+lack》0则表示路径可通，同时起点为remain<0时的下一个位置
+
+
+
 *150.evaluate-reverse-polish-notation
 
 用栈来存数值，每次遇到符号则出栈两个数字进行计算，operation用lambda
@@ -124,6 +130,18 @@ isalpha()  lower()  isdigit()
 171.excel-sheet-column-number
 
 ord(s)
+
+
+
+172.factorial-trailing-zeroes
+
+阶乘末尾0的个数和5的倍数有关
+
+
+
+*179.largest-number
+
+sorted函数中Key的函数的运用
 
 
 
@@ -173,6 +191,62 @@ n &= (n-1)
 
 
 
+*210.course-schedule-2
+
+拓扑排序
+
+
+
+*212.word-search-2
+
+如果每个词都单独进行一遍dfs，会超时。要结合使用前缀树，将一些前缀相同的单词一起查找。
+
+
+
 217.contains-duplicate
 
 用hash表来存出现过的数
+
+
+
+230.K-th-smallest-element-in-a-BST
+
+二叉搜索树里寻找第k个小的树
+
+方法一：
+
+中序遍历取出第k个数 $O(n)$ 
+
+方法二：
+
+用栈，直接取到最左叶子，然后按序取到第k个结点 $O(\log n +k)$
+
+
+
+237.delete-node-in-a-linked-list
+
+node.val = node.next.val
+
+node.next = node.next.next
+
+
+
+242.valid-anagram
+
+hash表，或collections.Counter()
+
+
+
+*268.missing-number
+
+方法一：
+
+hash表来存所有的数，判断每个索引是否存在于数集中
+
+方法二：
+
+把所有的数和索引用异或连起来
+
+方法三：
+
+数学求和公式，差就是缺失的那个数
