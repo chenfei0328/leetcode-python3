@@ -253,6 +253,12 @@ hash表来存所有的数，判断每个索引是否存在于数集中
 
 
 
+*315.count-of-smaller-number-after-self
+
+增序排序，每次都找原数在排序后数组中的索引位置，即为该数的smaller number，然后删除该数（排序数组），该数对后续数的判断没有作用
+
+
+
 *326.power-of-three
 
 方法一：
@@ -275,6 +281,47 @@ hash表来存所有的数，判断每个索引是否存在于数集中
 
 
 
+*329.longest-increasing-path-in-a-matrix
+
+dfs+memoization 每次记录都保存该点的path路径长
+
+
+
+*334.increasing-triplet-subsequence
+
+用两个指针来记录最小和第二小的数（按序的，而不是全局第二小），从而保证了前面有递增的两个小数
+
+
+
 344.reverse-string
 
 左右两端同时往中间移动
+
+
+
+350.intersection-of-two-arrays-2
+
+collections.Counter()
+
+
+
+387.first-unique-character-in-a-string
+
+用hash表来存各个字符的出现次数
+
+
+
+*378.K-th-smallest-element-in-a-sorted-matrix
+
+方法一：
+
+heapq.nsmallest(k, heapq.merge(*matrix))[-1]
+
+方法二：
+
+用栈来存，入栈时记录该元素的行和列，每次出栈都入栈该元素的下一行元素
+
+
+
+412.fizz-buzz
+
