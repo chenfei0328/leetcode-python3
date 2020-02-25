@@ -325,3 +325,16 @@ heapq.nsmallest(k, heapq.merge(*matrix))[-1]
 
 412.fizz-buzz
 
+
+
+*454.4sum-2
+
+点积
+
+from itertools import product
+
+AB = product(A, B)
+
+sumAB = Counter(x + y for (x, y) in AB)
+
+先点积，再counter，或者先counter，再点积
