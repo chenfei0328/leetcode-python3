@@ -261,3 +261,89 @@ string intToRoman(int num) {
 }
 ```
 
+
+
+16 3Sum Closest
+
+双指针
+
+```c++
+class Solution {
+public:
+    int threeSumClosest(vector<int>& nums, int target) {
+        sort(nums.begin(), nums.end());
+        int global = INT_MAX, ans = 0;
+        
+        for(int i = 0; i < nums.size() - 2; ++i) {
+            int l = i + 1, r = nums.size() - 1;
+
+            while(l < r) {
+                int tmp_sum = nums[i] + nums[l] + nums[r];
+                if(abs(target - tmp_sum) < global) {
+                    global = abs(target - tmp_sum);
+                    ans = tmp_sum;
+                }
+                
+                if(tmp_sum > target) {
+                    r--;
+                }
+                else if(tmp_sum < target) {
+                    l++;
+                }
+                else {
+                    return target;
+                }
+            }
+        }
+        return ans;
+    }
+};
+```
+
+
+
+18 4Sum
+
+多一层循环转换为 3Sum，或者牺牲空间来存所有两个数的 pair 来计算符合条件的两个 pair
+
+```c++
+class Solution {
+public:
+    vector<vector<int>> fourSum(vector<int>& nums, int target) {  
+        vector<vector<int>> ans;
+        if(nums.size() < 4) {
+            return ans;
+        }
+        set<vector<int>> ans_set;
+        sort(nums.begin(), nums.end());
+        int l = 0, r = nums.size() - 1;
+        for(int i = 0; i < nums.size() - 3; ++i) {
+            if(i != 0 && nums[i] == nums[i - 1]) continue;
+            for(int j = i + 1; j < nums.size() - 2; ++j) {
+                if(j != i + 1 && nums[j] == nums[j - 1]) continue;
+                
+                int l = j + 1, r = nums.size() - 1;
+                while(l < r) {
+                    int tmp_sum = nums[i] + nums[j] + nums[l] + nums[r];
+                    if(tmp_sum == target) {
+                        ans_set.insert({nums[i], nums[j], nums[l], nums[r]});
+                        l++;
+                        r--;
+                    }
+                    else if(tmp_sum > target) {
+                        r--;
+                    }
+                    else {
+                        l++;
+                    }
+                }
+            }
+        }
+        for(auto vec: ans_set) {
+            ans.push_back(vec);
+        }
+        return ans;
+    }
+};
+```
+
