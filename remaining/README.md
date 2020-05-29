@@ -347,3 +347,189 @@ public:
 };
 ```
 
+
+
+24 Swap Nodes in Pairs
+
+原地交换每两个结点
+
+```c++
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* swapPairs(ListNode* head) {
+        ListNode* headPointer = new ListNode(0, head);
+        ListNode* last = headPointer;
+        ListNode* curr = last->next;
+        while(curr != nullptr && curr->next != nullptr) {
+            last->next = curr->next;
+            curr->next = curr->next->next;
+            last->next->next = curr;
+            
+            last = curr;
+            curr = curr->next;
+        }
+        return headPointer->next;
+    }
+};
+```
+
+
+
+25 Reverse Nodes in k-Group
+
+24题的拓展，细分两个函数，一个是判断是否有 k 个结点需要逆置，一个专门用来逆置这 k 个结点
+
+```c++
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    bool hasKGroup(ListNode* node, int k) {
+        int i = 0;
+        while(i < k && node->next != nullptr) {
+            node = node->next;
+            i++;
+        }
+        return i == k;
+    }
+    ListNode* reverseKNodes(ListNode* head, int k) {
+        ListNode *curr = head->next->next;
+        ListNode *pre = head->next;
+        ListNode *nextNode = nullptr;
+        int i = 1;
+        while(i < k) {
+            nextNode = curr->next;
+            curr->next = head->next;
+            head->next = curr;
+            
+            curr = nextNode;
+            i++;
+        }
+        pre->next = curr;
+        return pre;
+    }
+    ListNode* reverseKGroup(ListNode* head, int k) {
+        if(k == 1) return head;
+        ListNode *phead = new ListNode(0, head);
+        ListNode *curr = phead;
+        while(hasKGroup(curr, k)) {
+            curr = reverseKNodes(curr, k);
+        }
+        return phead->next;
+    }
+};
+```
+
+
+
+27 Remove Element
+
+实际上就是覆盖地把元素写到一个标记合法元素的分界位置
+
+```c++
+class Solution {
+public:
+    int removeElement(vector<int>& nums, int val) {
+        int len = 0;
+        for(int i = 0; i < nums.size(); ++i) {
+            if(nums[i] != val) {
+                if(len != i) {
+                    nums[len] = nums[i];
+                }
+                len++;
+            }
+        }
+        return len;
+    }
+};
+```
+
+
+
+35 Search Insert Position
+
+二分查找，注意最后返回的是 l
+
+```c++
+class Solution {
+public:
+    int searchInsert(vector<int>& nums, int target) {
+        int l = 0, r = nums.size() - 1;
+        int mid = 0;
+        while(l <= r) {
+            mid = (l + r) / 2;
+            if(nums[mid] == target) {
+                return mid;
+            }
+            else if(nums[mid] > target) {
+                r = mid - 1;
+            }
+            else {
+                l = mid + 1;
+            }
+        }
+        return l;
+    }
+};
+```
+
+
+
+40 Combination Sum Ⅱ
+
+回溯
+
+```c++
+class Solution {
+public:
+    void findTarget(vector<vector<int>>& ans, vector<int>& combination, vector<int> candidates, int target, int k, int n) {
+        if(target == 0) {
+            ans.push_back(combination);
+            return;
+        }
+        
+        for(int i = k; i < n; ++i) {
+            // 防止出现重复的组合
+            if(i != k && candidates[i] == candidates[i - 1]) continue;
+            
+            if(candidates[i] <= target) {
+                combination.push_back(candidates[i]);
+                findTarget(ans, combination, candidates, target - candidates[i], i + 1, n);
+                combination.pop_back();
+            }
+        }
+        
+    }
+    vector<vector<int>> combinationSum2(vector<int>& candidates, int target) {
+        vector<vector<int>> ans;
+        vector<int> combination;
+        int n = candidates.size();
+        
+        if(n == 0) return ans;
+        
+        sort(candidates.begin(), candidates.end());
+        findTarget(ans, combination, candidates, target, 0, n);
+        
+        return ans;
+    }
+};
+```
+
