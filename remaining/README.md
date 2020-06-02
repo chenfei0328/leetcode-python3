@@ -533,3 +533,105 @@ public:
 };
 ```
 
+
+
+43 Multiply Strings
+
+两层循环逐一计算，用一个 m+n 长的数组来保存每一位的数字，并且在转换为字符串时注意首位无效的 0
+
+```c++
+class Solution {
+public:
+    string multiply(string num1, string num2) {
+        if(num1 == "0" || num2 == "0") return "0";
+        if(num1 == "1") return num2;
+        if(num2 == "1") return num1;
+        
+        int n = num1.length();
+        int m = num2.length();
+        vector<int> ans(n + m, 0);
+        
+        for(int i = n - 1; i >= 0; --i) {
+            for(int j = m - 1; j >= 0; --j) {
+                int sum = (num1[i] - '0') * (num2[j] - '0') + ans[i + j + 1];
+                ans[i + j + 1] = sum % 10;
+                ans[i + j] += sum / 10;
+            }
+        }
+        
+        string res;
+        for(auto num: ans) {
+            if(res.empty() && num == 0) continue;
+            res += to_string(num);
+        }
+        return res;
+    }
+};
+```
+
+
+
+46 Permutations
+
+回溯法，in-place
+
+```c++
+class Solution {
+public:
+    void backtrack(vector<vector<int>>& res, vector<int>& nums, int i, int n) {
+        if(i == n) {
+            res.push_back(nums);
+            return;
+        }
+        for(int j = i; j < n; ++j) {
+            swap(nums[j], nums[i]);
+            backtrack(res, nums, i + 1, n);
+            swap(nums[j], nums[i]);
+        }
+    }
+    
+    vector<vector<int>> permute(vector<int>& nums) {
+        int n = nums.size();
+        vector<vector<int>> res;
+        if(n == 0) return res;
+        backtrack(res, nums, 0, n);
+        return res;
+    }
+};
+```
+
+
+
+47 Permutations Ⅱ
+
+回溯，先判断元素是否唯一，唯一则执行回溯
+
+```c++
+class Solution {
+public:
+    vector<vector<int>> res;
+    
+    void backtrack(vector<int>& nums, int i, int n) {
+        if(i == n) {
+            res.push_back(nums);
+            return;
+        }
+        unordered_set<int> seen;
+        for(int j = i; j < n; ++j) {
+            if(seen.find(nums[j]) == seen.end()) {
+                swap(nums[j], nums[i]);
+                backtrack(nums, i + 1, n);
+                swap(nums[j], nums[i]);
+                seen.insert(nums[j]);
+            }
+        }
+    }
+    vector<vector<int>> permuteUnique(vector<int>& nums) {
+        int n = nums.size();     
+        if(n == 0) return res;
+        backtrack(nums, 0, n);
+        return res;
+    }
+};
+```
+
